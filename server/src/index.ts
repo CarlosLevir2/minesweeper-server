@@ -1,10 +1,8 @@
 import express from 'express';
+import routes from './api/api';
+
 const app = express();
 
-const PORT = 8000;
+app.use(routes);
 
-app.get('/', (req, res) => {
-  return res.send('Coders Club by Carlos Levir');
-});
-
-app.listen(PORT);
+app.listen(process.env.PORT || 8000);
