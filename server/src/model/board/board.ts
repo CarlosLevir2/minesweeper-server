@@ -71,8 +71,37 @@ export function revelCell(boardId: string, cell: Cell) {
       };
     }
 
+    const closeCell1 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex - 1}${cell.cellIndex - 1}`
+    );
+    const closeCell2 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex - 1}${cell.cellIndex}`
+    );
+    const closeCell3 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex - 1}${cell.cellIndex + 1}`
+    );
+    const closeCell4 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex - 1}${cell.cellIndex - 1}`
+    );
+    const closeCell5 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex}${cell.cellIndex - 1}`
+    );
+    const closeCell6 = minesMap[boardId].some(
+      (mine) => mine === `${cell.rowIndex + 1}${cell.cellIndex - 1}`
+    );
+
+    const closeMines = [
+      closeCell1,
+      closeCell2,
+      closeCell3,
+      closeCell4,
+      closeCell5,
+      closeCell6,
+    ].filter(Boolean).length;
+
     return {
       board,
+      closeMines,
       gameFinished: false,
       win: false,
       loose: false,
@@ -91,7 +120,7 @@ export function getBoard(boardId: string) {
       throw new Error();
     }
 
-    const reveledBoard = board.map((row, rowIndex) =>
+    const reveledBoard = board.map((row) =>
       row.map((cell) => ({
         ...cell,
         hasMine: minesMap[boardId].some(
