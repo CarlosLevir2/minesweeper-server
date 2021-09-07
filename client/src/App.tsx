@@ -1,12 +1,12 @@
-import { QueryClientProvider } from "react-query";
 import Main from "./pages/Main";
-import { queryClient } from "./services/query-client";
+import GlobalStyles from "./styles/global";
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
+      <GlobalStyles />
       <Main />
-    </QueryClientProvider>
+    </>
   );
 }
 
