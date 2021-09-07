@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`APP It should render App 1`] = `
+exports[`Main It should render App 1`] = `
 <div>
   <div
     class="sc-bdfBQB liTMNg"

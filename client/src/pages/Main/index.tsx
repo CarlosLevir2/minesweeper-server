@@ -16,9 +16,14 @@ export default function Main() {
 
   useEffect(() => {
     async function handleCreateBoard() {
-      const { data: { board } } = await createBoard();
-      window.history.replaceState({}, document.title, `?id=${board.id}`);
-      setBoard(board)
+      try {
+        const { data: { board } } = await createBoard();
+        window.history.replaceState({}, document.title, `?id=${board.id}`);
+
+        setBoard(board)
+      } catch (err) {
+        // err
+      }
     };
 
     async function handleGetBoard() {
