@@ -6,7 +6,7 @@ export function createBoard(_req: Request, res: Response) {
   const { error, board } = boardModel.createBoard();
 
   if (error) {
-    res.status(500).send('An error occurred');
+    res.status(500).json({ message: 'An error occurred' });
   }
 
   return res.json({ board });
@@ -19,7 +19,7 @@ export function revelCell(req: Request, res: Response) {
   );
 
   if (error) {
-    return res.status(500).send('An error occurred');
+    return res.status(500).json({ message: 'An error occurred' });
   }
 
   res.json({ board });
@@ -32,7 +32,7 @@ export function flagCell(req: Request, res: Response) {
   );
 
   if (error) {
-    return res.status(500).send('An error occurred');
+    return res.status(500).json({ message: 'An error occurred' });
   }
 
   res.json({ board });
@@ -42,7 +42,7 @@ export function getBoard(req: Request, res: Response) {
   const { board, error } = boardModel.getBoard(req.params.boardId);
 
   if (error) {
-    return res.status(500).send('An error occurred');
+    return res.status(500).json({ message: 'An error occurred' });
   }
 
   return res.json(board);

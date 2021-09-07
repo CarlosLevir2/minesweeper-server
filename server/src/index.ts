@@ -8,4 +8,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(process.env.PORT || 8000);
+const server = app.listen(process.env.PORT || 8000);
+
+export { app, server };
