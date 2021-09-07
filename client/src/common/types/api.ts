@@ -1,19 +1,28 @@
-export type ApiResponse<T> = {
-  data: T;
-};
-
 export type Cell = {
   hasMine?: boolean;
   hasFlag: boolean;
   rowIndex: number;
   cellIndex: number;
   reveled: boolean;
+  closeMines?: number;
 };
 
-export type Board = Cell[][];
+export type Row = Cell[];
+
+export type UnfilledBoard = [][];
+
+export type Board = {
+  id: string;
+  rows: Row[];
+  gameFinished: boolean;
+  win: boolean;
+  loose: boolean;
+};
 
 export type Boards = {
-  [key: string]: Board;
+  [key: string]: {
+    board: Board;
+  };
 };
 
 export type MineMap = {
