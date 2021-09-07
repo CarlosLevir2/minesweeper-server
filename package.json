@@ -8,7 +8,8 @@
     "dev": "nodemon src/index.ts",
     "start": "node build/index.js",
     "build": "tsc -p ./",
-    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit"
+    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@babel/preset-env": "^7.15.4",
